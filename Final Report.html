@@ -7572,7 +7572,7 @@ a.anchor-link {
 <span class="ansi-red-fg">✖</span> <span class="ansi-blue-fg">dplyr</span>::<span class="ansi-green-fg">lag()</span>      masks <span class="ansi-blue-fg">stats</span>::lag()
 <span class="ansi-red-fg">✖</span> <span class="ansi-blue-fg">yardstick</span>::<span class="ansi-green-fg">spec()</span> masks <span class="ansi-blue-fg">readr</span>::spec()
 <span class="ansi-red-fg">✖</span> <span class="ansi-blue-fg">recipes</span>::<span class="ansi-green-fg">step()</span>   masks <span class="ansi-blue-fg">stats</span>::step()
-<span class="ansi-blue-fg">•</span> Use suppressPackageStartupMessages() to eliminate package startup messages
+<span class="ansi-blue-fg">•</span> Learn how to get started at <span class="ansi-green-fg">https://www.tidymodels.org/start/</span>
 
 Loading required package: Matrix
 
@@ -7702,10 +7702,7 @@ Each member of our group approached the dataset with a unique perspective and an
 Research question: How does experience level, employment type and company size affect the salary of an employee?”
 This research question aligns with already existing literature. For instance, Shambrook et al. (2011) shed light on the positive effect of high experience level on higher salary. Molina-Domene &amp; M. (2018) also investigated why there is a pay disparity between small and large-size firms, indicating that the company size could be a significant factor in determining an employee’s salary.</p>
 <p>Question:
-This project will analyze the impact of various factors on salary levels in the field of data science. The predictive research question is: "How does experience level, employment type and company size affect the salary of an employee?" We will use salary_in_usd (salary in USD) as the response variable and explore explanatory variables such as experience_level (work experience), employment_type (employment type), and company_size (company size) to assess their influence on salary. The aim of this study is to analyze how these factors affect salary through inferential analysis and to use the model for salary prediction.
-Experience Level: Work experience directly impacts salary levels. From entry-level to executive roles, increased experience often accompanies higher salaries. This data helps quantify salary differences across experience levels and provides evidence on whether experience is a major factor influencing salary.
-Employment Type: Different employment types, such as full-time, part-time, contract, and freelance, may result in significant salary differences. Analyzing this variable helps us understand the salary distribution across different employment types and reveals how employment type affects salary.
-Company Size: Company size may reflect the resources and compensation strategies of an organization. Generally, larger companies have more resources and may offer higher salaries, while smaller companies may be more financially constrained. This variable helps evaluate the impact of company size on salary levels, revealing the differences in salary between large and small companies.</p>
+This project will analyze the impact of various factors on salary levels in the field of data science. The predictive research question is: "How does experience level, employment type and company size effect the salary of an employee?" We will use salary_in_usd (salary in USD) as the response variable and explore explanatory variables such as experience_level (work experience), employment_type (employment type), and company_size (company size) to assess their influence on salary. The aim of this study is to analyze how these factors affect salary through predictive analysis and to use the model for salary prediction.</p>
 </div>
 </div>
 </div>
@@ -7861,7 +7858,7 @@ The data was collected by aggregating salary information from ai-jobs.net, encom
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">14</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">7</span><span class="p">)</span><span class="w"> </span>
@@ -7885,7 +7882,6 @@ The data was collected by aggregating salary information from ai-jobs.net, encom
 <span class="w">  </span><span class="nf">geom_boxplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
 <span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Work Year vs Salary in USD"</span><span class="p">)</span>
 
-
 <span class="nf">grid.arrange</span><span class="p">(</span><span class="n">plot1</span><span class="p">,</span><span class="w"> </span><span class="n">plot2</span><span class="p">,</span><span class="w"> </span><span class="n">plot3</span><span class="p">,</span><span class="w"> </span><span class="n">plot4</span><span class="p">,</span><span class="w"> </span><span class="n">plot5</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -7904,30 +7900,12 @@ The data was collected by aggregating salary information from ai-jobs.net, encom
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4636db0f-a4c1-4aa4-9cbe-22a09d188457">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ul>
-<li>Experience Level: Higher levels earn more; EN has the lowest salaries.</li>
-<li>Employment Type: FT earns more; FL and PT have lower salaries.</li>
-<li>Company Size: Larger companies offer higher salaries than smaller ones.</li>
-<li>Remote Ratio: Fully remote (100%) shows a slightly higher salary range.</li>
-<li>Work Year: Salaries slightly increase over time (2020–2022).</li>
-</ul>
-<p>Based on these plots, we can see that the median and spread of categories in <code>remote_ratio</code> and <code>work_year</code> overlap with eachother, making them not very good predictors. <code>Experience_level</code>, <code>employment_type</code>, and <code>company_size</code> has variations in their median and spread which make them interesting factors when predicting.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e89b3f45-4ee9-4e94-844f-4274dbbce670">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f60fee76-d219-47ff-9bd7-5bcc075df14b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1">#Bar plot to visualize the distribution of job titles</span>
@@ -7955,20 +7933,22 @@ The data was collected by aggregating salary information from ai-jobs.net, encom
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=297d5e25-e571-4a7b-bb5c-2d312f2e99db">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4636db0f-a4c1-4aa4-9cbe-22a09d188457">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>This bar chart illustrates the distribution of job titles:</p>
 <ul>
-<li>Data Scientist and Data Engineer are the most common roles, with the highest frequencies.</li>
-<li>Data Analyst also appears frequently, but less so compared to the top two roles.</li>
-<li>Other specialized roles like Machine Learning Engineer and Research Scientist are less common.</li>
+<li>Experience Level: Higher levels earn more; EN has the lowest salaries.</li>
+<li>Employment Type: FT earns more; FL and PT have lower salaries.</li>
+<li>Company Size: Larger companies offer higher salaries than smaller ones.</li>
+<li>Remote Ratio: Fully remote (100%) shows a slightly higher salary range.</li>
+<li>Work Year: Salaries slightly increase over time (2020–2022).</li>
+<li>Job title: Unique for many roles</li>
 </ul>
-<p>The chart highlights the dominance of general data science and engineering roles in the dataset.
-However, it is worth noting that the distribution of job titles in our dataset is sparse and thus, is not the best variable to be used as a predictor.</p>
+<p>Based on these plots, we can see that the median of both remote_ratio and work_year overlap with the other categories, making them not very good predictors. experience_level, employment_type, and company_size have variations in their median which make them interesting factors when predicting due to their high importance in the hiring process. The Distrabution of Job titles chart highlights the dominance of general data science and engineering roles in the dataset. However, it is worth noting that the distribution of job titles in our dataset is sparse and thus, is not the best variable to be used as a predictor.</p>
+<p>The reason we do not select all the variables and optimization with a method like forward selection is because of the nature of the dataset. These methods work best with numerical datasets. With our primarily categorical dataset, such an algorithm results in too many levels for it to be used for any useful experiment. Thus for this experiment, this simplified model will suffice in determining the effects of these three variables in the prediction of salary.</p>
 </div>
 </div>
 </div>
@@ -8294,15 +8274,15 @@ Cross-Validated Kappa:  0.4790862
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The results of your findings are that;</p>
+<p>The results imply that;</p>
 <ol>
 <li>Smaller companies may want to offer competitive wages to attract high-quality candidates. It will lead to a lower employee-turnover rate and an increased commitment from employees.</li>
 <li>The working class individuals seeking higher salaries may want to pursue senior or executive roles.</li>
 </ol>
 <p>The results aligned with our expectations based on our practical industry knowledge. Higher experience levels and larger company sizes significantly increased salaries, consistent with industry trends. This could be explained by the greater amount of resources that are available in large-size companies as well as a greater skill-set in experienced individuals. Employment type's influence on salary also matched our pre-existing knowledge.</p>
-<p>Future improvements could focus on expanding the feature set to enhance the model's predictive capability. Currently, the model relies on three features: experience_level, employment_type, and company_size. While these are relevant, they may not fully capture the complex relationships in the data. Incorporating additional features, such as job_title, which reflects salary trends across different roles, or remote_ratio, which may reveal the impact of remote work on salary, could provide a richer representation of the data. Additionally, including work_year could capture temporal effects and trends that influence salary changes over time.</p>
+<p>Future improvements could focus on expanding the feature set to enhance the model's predictive capability. Currently, the model relies on three features: <code>experience_level</code>, <code>employment_type</code>, and <code>company_size</code>. While these are relevant, they may not fully capture the complex relationships in the data. Incorporating additional features, such as job_title, which reflects salary trends across different roles, or remote_ratio, which may reveal the impact of remote work on salary, could provide a richer representation of the data. Additionally, including work_year could capture temporal effects and trends that influence salary changes over time.</p>
 <p>We in the future might examine how gender, ethnicity, and other diversity factors influence salary and opportunities for advancement in data science. We could examine the other factors that influence the pay disparity between small and big size companies or that how do salary distributions vary across different regions.</p>
-<p>In conclusion, study examined how experience level, employment type, and company size impact salaries in data-related jobs. Higher experience levels and being employed at larger companies significantly increased the likelihood of earning above the median salary, while freelance and part-time roles tended to yield lower earnings. The logistic regression model showed reasonable accuracy of 74%, though variability in some predictors suggests areas for improvement. These insights can guide career planning and compensation strategies, with future research exploring additional factors and refining predictive models for a deeper understanding of salary dynamics.</p>
+<p>In conclusion, study examined how experience level, employment type, and company size may effect salaries in data-related jobs. Higher experience levels and being employed at larger companies significantly increased the likelihood of earning above the median salary, while freelance and part-time roles tended to yield lower earnings. The logistic regression model based on the varibles choosen for this experiment showed reasonable accuracy of 74%, though variability in some predictors suggests areas for improvement. These insights can guide career planning and compensation strategies, with future research exploring additional factors and refining predictive models for a deeper understanding of salary dynamics.</p>
 </div>
 </div>
 </div>
